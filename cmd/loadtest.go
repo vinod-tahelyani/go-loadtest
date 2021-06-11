@@ -29,10 +29,10 @@ func init()  {
 	flag.IntVar(&cmdLineOptions.RequestPerSecond, "rps", 1, "Specify the requests per second for each client")
 
 	flag.Var(cmdLineOptions.RequestHeaders, "headers", "Send a header as header:value (multiple)")
-	flag.Var(cmdLineOptions.RequestHeaders, "h", "Send a header as header:value (multiple)")
+	flag.Var(cmdLineOptions.RequestHeaders, "H", "Send a header as header:value (multiple)")
 
 	flag.Var(cmdLineOptions.Cookies, "cookie", "Send a cookie as name=value (multiple)")
-	flag.Var(cmdLineOptions.Cookies, "c", "Send a cookie as name=value (multiple)")
+	flag.Var(cmdLineOptions.Cookies, "C", "Send a cookie as name=value (multiple)")
 
 }
 
