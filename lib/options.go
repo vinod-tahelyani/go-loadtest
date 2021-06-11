@@ -7,6 +7,7 @@ import (
 	"net/http"
 	urlLib "net/url"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -95,7 +96,13 @@ func (options *Options) ExecuteTest() Result {
 type Headers http.Header
 
 func (headers Headers) String() string {
-	return headers.String()
+	var sb strings.Builder
+	sb.WriteString("[\n")
+	for key, value := range headers {
+		sb.WriteString(fmt.Sprintf("{%s: %v},\n", key, value))
+	}
+	sb.WriteString("]")
+	return sb.String()
 }
 
 func (headers Headers) Set(header string) error {
@@ -105,7 +112,13 @@ func (headers Headers) Set(header string) error {
 type Cookies []http.Cookie
 
 func (cookies Cookies) String() string {
-	return cookies.String()
+	var sb strings.Builder
+	sb.WriteString("[\n")
+	for _, cookie := range cookies {
+		sb.WriteString(fmt.Sprintf("{%s: %s},\n", cookie.Name, cookie.Value))
+	}
+	sb.WriteString("]")
+	return sb.String()
 }
 
 func (cookies Cookies) Set(header string) error {
